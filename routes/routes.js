@@ -1,8 +1,11 @@
 const express = require('express')
-
+const router = express.Router()
 const db = require('../db')
 
-const router = express.Router()
+let development = require("./knexfile").development;
+let knex = require("knex")(development);
+
+// Home Page
 
 router.get('/', (req, res) => {
   db.getUsers()
@@ -13,5 +16,12 @@ router.get('/', (req, res) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
+
+
+// res.render data from database directly to /books page
+
+
+// get and post form data to the database and return it to the books page
+
 
 module.exports = router
