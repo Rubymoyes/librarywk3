@@ -3,14 +3,18 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
+  getBooks: getBooks
 }
 
-function showList ()
+// function showList ()
 
-function updateAvailability ()
+// function updateAvailability ()
 
-function checkoutBook ()
+// function checkoutBook ()
 
 // get and post form data to the database
 
-
+function getBooks (testConn) {
+  const conn = testConn || connection
+  return conn('books').select()
+}

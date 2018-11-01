@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../db')
+const db = require('./db')
 
 let development = require("./knexfile").development;
 let knex = require("knex")(development);
@@ -8,13 +8,17 @@ let knex = require("knex")(development);
 // Home Page
 
 router.get('/', (req, res) => {
-  db.getUsers()
-    .then(users => {
-      res.render('index', {users: users})
-    })
-    .catch(err => {
-      res.status(500).send('DATABASE ERROR: ' + err.message)
-    })
+  // db.getUsers()
+  //   .then(users => {
+  //     res.render('index', {users: users})
+  //   })
+  //   .catch(err => {
+  //     res.status(500).send('DATABASE ERROR: ' + err.message)
+  //   })
+  db.getBooks()
+  .then(books => {
+    res.render('books-list', {books: books})
+  })
 })
 
 
