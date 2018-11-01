@@ -7,7 +7,8 @@
     "knex": "knex",
     "dev": "nodemon index",
     "start": "node index",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "knex migrate:latest"
   },
   "repository": {
     "type": "git",
