@@ -1,7 +1,9 @@
 <h1>Books</h1>
 <ul>
   {{#each books}}
-  <a href="./checkout-page"><li>{{name}} : {{author}}</li></a>
+
+  <a href="./checkout/{{id}}"><li>{{name}} by {{author}}<br>
+  </li></a>
 
   {{/each}}
 

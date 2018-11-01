@@ -5,27 +5,44 @@ const db = require('./db')
 let development = require("./knexfile").development;
 let knex = require("knex")(development);
 
-// Home Page
+
+// Render books Page 
 
 router.get('/', (req, res) => {
-  // db.getUsers()
-  //   .then(users => {
-  //     res.render('index', {users: users})
-  //   })
-  //   .catch(err => {
-  //     res.status(500).send('DATABASE ERROR: ' + err.message)
-  //   })
   db.getBooks()
   .then(books => {
     res.render('books-list', {books: books})
   })
 })
 
+// Render checkout page
 
-// res.render data from database directly to /books page
+router.get('/checkout/:id', (req, res) => {
+  let id = req.params.id
+  db.getCheckout()
+  .where( {'books.id': id} )
+  .then(books => {
+    let book = books[0]
+    res.render('checkout', book)
+  })
+})
 
+// Post method: send data to db for availability]
 
-// get and post form data to the database and return it to the books page
+router.post('/checkout/:id', (req, res) => {
+  let id = req.params.id
+
+  let status = req.body.userName
+  db.updateAvailability(id, status)
+  .then(() => {
+    res.redirect('/checkout/' + id)
+    // res.redirect('/')
+  })
+  .catch(err => {
+    console.log(err)
+  })
+})
+
 
 
 module.exports = router
