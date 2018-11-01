@@ -10,23 +10,27 @@ beforeEach(() => {
 
 afterEach(() => testEnv.cleanup(testDb))
 
-test('getUsers gets all users', () => {
+
+
+
+
+
+// Basic Test
+
+test('Working.', function () {
+  expect(true).toBe(true)
+})
+
+// Test 1 - getBooks
+
+test('getBooks gets the list of books', () => {
   // One for each letter of the alphabet!
-  const expected = 26
-  return db.getUsers(testDb)
-    .then(users => {
-      const actual = users.length
-      expect(actual).toBe(expected)
+  return db.getBooks(testDb)
+    .then(books => {
+      expect('').toBe('')
     })
     .catch(err => expect(err).toBeNull())
 })
 
-test('getUser gets a single user', () => {
-  const expected = 'Ambitious Aardvark'
-  return db.getUser(99901, testDb)
-    .then(user => {
-      const actual = user.name
-      expect(actual).toBe(expected)
-    })
-    .catch(err => expect(err).toBeNull())
-})
+// Test 2
+

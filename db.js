@@ -15,7 +15,6 @@ function getBooks (testConn) {
   return conn('books').select()
 }
 
-
 // Go to the checkout page
 
 function getCheckout (testConn) {

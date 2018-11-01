@@ -3,17 +3,25 @@ const cheerio = require('cheerio')
 
 const server = require('../server')
 
-// Jest Tests - Routes Files
+// Jest Tests - Database
 
 jest.mock('../db', () => ({
-  getUser: (id) => Promise.resolve(
-    {id: id, name: 'test user', email: 'test@user.nz'}
+  getBooks: () => Promise.resolve(
+    {id: 99901, name: 'Search Inside Yourself: The Unexpected Path to Achieving Success, Happiness (and World Peace)', author: 'Chade-Meng Tan'}
   ),
-  getUsers: () => Promise.resolve([
-    {id: 2, name: 'test user 2', email: 'test2@user.nz'},
-    {id: 4, name: 'test user 4', email: 'test4@user.nz'}
-  ])
 }))
+
+// jest.mock('../db', () => ({
+//   getCheckout: () => Promise.resolve(
+//   {id: 99901, name: 'Search Inside Yourself: The Unexpected Path to Achieving Success, Happiness (and World Peace)', author: 'Chade-Meng Tan'}
+// ),
+// }))
+
+
+
+
+
+// Basic HTML test
 
 test('GET /', () => {
   return request(server)
@@ -21,8 +29,8 @@ test('GET /', () => {
     .expect(200)
     .then((res) => {
       const $ = cheerio.load(res.text)
-      const firstLiText = $('li').first().text()
-      expect(firstLiText).toBe('test user 2 (test2@user.nz)')
+      const firsth1Text = $('h1').first().text()
+      expect(firsth1Text).toBe('Books')
     })
     .catch(err => expect(err).toBeNull())
 })
