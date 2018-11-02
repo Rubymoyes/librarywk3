@@ -19,8 +19,7 @@ router.get('/', (req, res) => {
 
 router.get('/checkout/:id', (req, res) => {
   let id = req.params.id
-  db.getCheckout()
-  .where( {'books.id': id} )
+  db.getBook(id)
   .then(books => {
     let book = books[0]
     res.render('checkout', book)

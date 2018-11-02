@@ -36,3 +36,7 @@ test('getBooks gets the list of books', () => {
 
 // Test 2
 
+test('updateAvailability updates status column for selected book', () =>{
+  const expected = 'Ruby'
+  return db.upDate
+})

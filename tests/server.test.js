@@ -6,17 +6,13 @@ const server = require('../server')
 // Jest Tests - Database
 
 jest.mock('../db', () => ({
-  getBooks: () => Promise.resolve(
+  getBook: () => Promise.resolve(
     {id: 99901, name: 'Search Inside Yourself: The Unexpected Path to Achieving Success, Happiness (and World Peace)', author: 'Chade-Meng Tan'}
   ),
+  getBooks: () => Promise.resolve(
+    [{id: 99901, name: 'Search Inside Yourself: The Unexpected Path to Achieving Success, Happiness (and World Peace)', author: 'Chade-Meng Tan'}]
+  ),
 }))
-
-jest.mock('../db', () => ({
-  getCheckout: () => Promise.resolve(
-  {id: 99901, name: 'Search Inside Yourself: The Unexpected Path to Achieving Success, Happiness (and World Peace)', author: 'Chade-Meng Tan'}
-),
-}))
-
 
 // Basic HTML test
 
@@ -42,7 +38,7 @@ test('GET /checkout/99901', () => {
       const firsth1Text = $('h1').first().text()
       expect(firsth1Text).toBe('Checkout Page')
     })
-    // .catch(err => expect(err).toBeNull())
+    .catch(err => expect(err).toBeNull())
 })
 
 // test("check text id is correct", (done) => {
