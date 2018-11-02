@@ -20,25 +20,25 @@ jest.mock('../db', () => ({
 
 // Basic HTML test
 
-test('GET /', () => {
+// test('GET /', () => {
+//   return request(server)
+//     .get('/')
+//     .then((res) => {
+//       const $ = cheerio.load(res.text)
+//       const firsth1Text = $('h1').first().text()
+//       expect(firsth1Text).toBe('Books')
+//     })
+//     .catch(err => expect(err).toBeNull())
+// })
+
+
+test('GET /checkout/99901', () => {
   return request(server)
-    .get('/')
+    .get('/checkout/99901')
     .then((res) => {
       const $ = cheerio.load(res.text)
       const firsth1Text = $('h1').first().text()
-      expect(firsth1Text).toBe('Books')
+      expect(firsth1Text).toBe('Checkout Page')
     })
-    .catch(err => expect(err).toBeNull())
-})
-
-
-test('GET /checkout/:id', () => {
-  return request(server)
-    .get('/checkout/:id')
-    .then((res) => {
-      const $ = cheerio.load(res.text)
-      const firsth1Text = $('h1').first().text()
-      expect(firsth1Text).toEqual('Checkout Page')
-    })
-    .catch(err => expect(err).toBeNull())
+    // .catch(err => expect(err).toBeNull())
 })
