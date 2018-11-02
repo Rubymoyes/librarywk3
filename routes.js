@@ -6,6 +6,7 @@ let development = require("./knexfile").development;
 let knex = require("knex")(development);
 
 
+
 // Render books Page 
 
 router.get('/', (req, res) => {
@@ -14,6 +15,7 @@ router.get('/', (req, res) => {
     res.render('books-list', {books: books})
   })
 })
+
 
 // Render checkout page
 
