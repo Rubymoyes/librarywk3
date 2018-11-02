@@ -6,6 +6,7 @@ let development = require("./knexfile").development;
 let knex = require("knex")(development);
 
 
+
 // Render books Page 
 
 router.get('/', (req, res) => {
@@ -15,12 +16,12 @@ router.get('/', (req, res) => {
   })
 })
 
+
 // Render checkout page
 
 router.get('/checkout/:id', (req, res) => {
   let id = req.params.id
-  db.getCheckout()
-  .where( {'books.id': id} )
+  db.getBook(id)
   .then(books => {
     let book = books[0]
     res.render('checkout', book)

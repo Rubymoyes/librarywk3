@@ -3,6 +3,7 @@ const config = require('./knexfile')[environment]
 const connection = require('knex')(config)
 
 module.exports = {
+  getBook: getBook,
   getBooks: getBooks,
   getCheckout: getCheckout,
   updateAvailability: updateAvailability
@@ -13,6 +14,11 @@ module.exports = {
 function getBooks (testConn) {
   const conn = testConn || connection
   return conn('books').select()
+}
+
+function getBook (id, testConn) {
+  const conn = testConn || connection
+  return conn('books').where('id', id).select()
 }
 
 // Go to the checkout page

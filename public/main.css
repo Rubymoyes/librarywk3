@@ -1,0 +1,34 @@
+*{
+    background-color: mistyrose;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+div {
+    text-align: center;
+}
+
+
+title {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    }
+
+
