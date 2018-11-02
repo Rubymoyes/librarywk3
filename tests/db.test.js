@@ -25,9 +25,11 @@ test('Working.', function () {
 
 test('getBooks gets the list of books', () => {
   // One for each letter of the alphabet!
+  const expected = 10
   return db.getBooks(testDb)
     .then(books => {
-      expect('').toBe('')
+      const actual = books.length
+      expect(actual).toBe(expected)
     })
     .catch(err => expect(err).toBeNull())
 })

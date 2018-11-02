@@ -18,19 +18,27 @@ jest.mock('../db', () => ({
 // }))
 
 
-
-
-
 // Basic HTML test
 
 test('GET /', () => {
   return request(server)
     .get('/')
-    .expect(200)
     .then((res) => {
       const $ = cheerio.load(res.text)
       const firsth1Text = $('h1').first().text()
       expect(firsth1Text).toBe('Books')
+    })
+    .catch(err => expect(err).toBeNull())
+})
+
+
+test('GET /checkout/:id', () => {
+  return request(server)
+    .get('/checkout/:id')
+    .then((res) => {
+      const $ = cheerio.load(res.text)
+      const firsth1Text = $('h1').first().text()
+      expect(firsth1Text).toEqual('Checkout Page')
     })
     .catch(err => expect(err).toBeNull())
 })
